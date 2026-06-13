@@ -17,7 +17,7 @@ export default defineConfig({
         {
           text: '笔记',
           items: [
-            { text: '所有笔记', link: '/notes/' },
+            { text: 'in', link: '/notes/in' },
           ],
         },
       ],
