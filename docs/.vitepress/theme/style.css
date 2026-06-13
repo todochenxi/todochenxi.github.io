@@ -1,0 +1,45 @@
+/* 上一篇/下一篇始终贴在页面底部 */
+.VPDoc {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: calc(100vh - var(--vp-nav-height));
+  padding-bottom: 0 !important;
+}
+
+.VPDoc > .container {
+  flex: 1;
+  display: flex;
+}
+
+.VPDoc .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.VPDoc .content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.VPDoc .content-container > .main {
+  flex: 1;
+}
+
+@media (min-width: 960px) {
+  .VPDoc .content {
+    padding-bottom: 32px;
+  }
+}
+
+/* outline 目录长标题换行 + 溢出裁剪 */
+.aside-container {
+  overflow-x: clip !important;
+  overflow-y: auto !important;
+}
+
+.outline-link {
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+}

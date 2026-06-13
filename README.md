@@ -10,8 +10,7 @@ github/
 ├── docs/
 │   ├── .vitepress/config.mts      # VitePress 配置
 │   ├── index.md                   # 首页（hero 样式）
-│   └── notes/
-│       └── index.md               # 笔记入口
+│   └── notes/                     # 笔记目录，.md 文件放这里
 ├── package.json
 └── .gitignore
 ```
@@ -24,9 +23,34 @@ github/
 | `npm run docs:build` | 构建静态站点 |
 | `npm run docs:preview` | 预览构建结果 |
 
-## 下一步
+## 完整流程
 
-1. **写笔记** — 在 `docs/notes/` 下创建 `.md` 文件即可，VitePress 侧边栏会自动收录
-2. **推送到 GitHub** — 创建仓库后 push 上去
-3. **配置 Pages** — 在 GitHub 仓库 Settings → Pages → Source 选 **GitHub Actions**
-4. **自动部署** — 以后每次 push 到 main 分支会自动构建发布
+### 1. 写笔记
+
+在 `docs/notes/` 下新建 `.md` 文件，例如 `docs/notes/react-hooks.md`。
+
+### 2. 注册到侧边栏
+
+编辑 `docs/.vitepress/config.mts`，在 `sidebar` 的 `items` 里加一行：
+
+```ts
+{ text: '笔记标题', link: '/notes/文件名' }
+```
+
+### 3. 本地预览
+
+```bash
+npm run docs:dev
+```
+
+浏览器打开 `http://localhost:5173/`，边写边看效果。
+
+### 4. 发布上线
+
+```bash
+git add .
+git commit -m "添加 xxx 笔记"
+git push
+```
+
+push 之后 GitHub Actions 自动部署，等一两分钟站点 `https://todochenxi.github.io/` 即更新。

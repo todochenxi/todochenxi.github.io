@@ -1,0 +1,104 @@
+/* 上一篇/下一篇始终贴在页面底部 */
+.VPDoc {
+  padding-bottom: 0 !important;
+}
+
+.VPDoc .content {
+  min-height: calc(100vh - var(--vp-nav-height) - 96px);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 48px;
+}
+
+.VPDoc .content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.VPDoc .content-container > .main {
+  flex: 1;
+}
+
+/* 翻页按钮靠左 */
+.pager-link.next {
+  margin-left: 0 !important;
+  text-align: left !important;
+}
+
+/* 图片居中 */
+.vp-doc img {
+  display: block;
+  margin: 0 auto;
+}
+
+/* 表格居中 */
+.vp-doc table {
+  display: table;
+  width: auto;
+  margin: 0 auto;
+}
+
+/* 图表标题居中 */
+.vp-doc caption {
+  text-align: center;
+  caption-side: top;
+  color: var(--vp-c-text-2);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.vp-doc figcaption {
+  text-align: center;
+  color: var(--vp-c-text-2);
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.vp-doc figure {
+  margin: 24px 0;
+}
+
+/* ===== 目录侧边栏（Outline）折叠 ===== */
+.outline-toggle-btn {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  width: 18px;
+  height: 36px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 4px 0 0 4px;
+  cursor: pointer;
+  font-size: 10px;
+  color: var(--vp-c-text-2);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: right 0.3s, opacity 0.2s;
+}
+/* outline 可见时：贴在 outline 左边缘（正文与目录交界处） */
+@media (min-width: 1280px) {
+  html:not(.outline-collapsed) .outline-toggle-btn {
+    right: 264px;
+  }
+}
+/* outline 折叠时：贴到最右边缘 */
+html.outline-collapsed .outline-toggle-btn {
+  right: 4px;
+}
+.outline-toggle-btn:hover {
+  opacity: 0.8;
+}
+
+/* 折叠状态：隐藏 outline + 正文扩展 */
+html.outline-collapsed .VPDoc .aside {
+  display: none !important;
+}
+html.outline-collapsed .VPDoc.has-aside .content-container {
+  max-width: none !important;
+}
+
